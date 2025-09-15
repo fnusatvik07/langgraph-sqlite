@@ -1,3 +1,23 @@
-a=[10,20,30,40,50,60,70]
+from fastapi import FastAPI
+from pydantic import BaseModel
 
-print(a[:-2])
+app=FastAPI(title="Addition API")
+
+# Request Schema
+
+class AddRequest(BaseModel):
+    a:float
+    b:float
+
+# Response Schema
+
+class AddResponse(BaseModel):
+    result:float
+
+
+
+@app.post("/add",response_model=AddResponse)
+def add(request:AddRequest):
+    return {"result": request.a +request.b}
+
+    

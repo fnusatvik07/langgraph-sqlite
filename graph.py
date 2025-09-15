@@ -88,6 +88,8 @@ while True:
 
     print(response)
 
+    snapshots=list(graph.get_state_history(config))
+
 
 
 
